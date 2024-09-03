@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Checkbox Selector</title>
+    <style>
+        .color-box-container {
+            display: flex;
+            margin-top: 10px;
+        }
+        .color-box {
+            width: 150px;
+            height: 150px;
+            border: 1px solid #000;
+            margin-right: 0px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Select Colors</h2>
+    <form id="color-form">
+        <input type="checkbox" id="seoyeon" name="colors" value="#1E90FF"> Seoyeon<br>
+        <input type="checkbox" id="hyerin" name="colors" value="#736AFF"> Hyerin<br>
+        <input type="checkbox" id="jiwoo" name="colors" value="#FAFA33"> Jiwoo<br>
+        <input type="checkbox" id="chaeyeon" name="colors" value="#66CC33"> Chaeyeon<br>
+        <input type="checkbox" id="yooyeon" name="colors" value="#EC118F"> Yooyeon<br>
+        <input type="checkbox" id="soomin" name="colors" value="#FC83A5"> Soomin<br>
+        <input type="checkbox" id="nakyoung" name="colors" value="#5F9EA0"> Nakyoung<br>
+        <input type="checkbox" id="yubin" name="colors" value="#FFE3E2"> Yubin<br>
+        <input type="checkbox" id="kaede" name="colors" value="#FFC936"> Kaede<br>
+        <input type="checkbox" id="dahyun" name="colors" value="#FBA0E3"> Dahyun<br>
+        <input type="checkbox" id="kotone" name="colors" value="#FEE002"> Kotone<br>
+        <input type="checkbox" id="yeonji" name="colors" value="#5974FF"> Yeonji<br>
+        <input type="checkbox" id="nien" name="colors" value="#FF953F"> Nien<br>
+        <input type="checkbox" id="sohyun" name="colors" value="#1222B5"> Sohyun<br>
+        <input type="checkbox" id="xinyu" name="colors" value="#D51312"> Xinyu<br>
+        <input type="checkbox" id="mayu" name="colors" value="#FE8E76"> Mayu<br>
+        <input type="checkbox" id="lynn" name="colors" value="#AB63B4"> Lynn<br>
+        <input type="checkbox" id="joobin" name="colors" value="#B7F54C"> Joobin<br>
+        <input type="checkbox" id="hayeon" name="colors" value="#52D8BB"> Hayeon<br>
+        <input type="checkbox" id="shion" name="colors" value="#ff428a"> Shion<br>
+        <input type="checkbox" id="chaewon" name="colors" value="#DEE0EC"> Chaewon<br>
+        <input type="checkbox" id="sullin" name="colors" value="#8FBC8F"> Sullin<br>
+        <input type="checkbox" id="seoah" name="colors" value="#8FBC8F"> Seoah<br>
+        <input type="checkbox" id="jiyeon" name="colors" value="#F7B360"> Jiyeon<br>
+    </form>
+
+    <div class="color-box-container">
+        <div class="color-box" id="box1"></div>
+        <div class="color-box" id="box2"></div>
+        <div class="color-box" id="box3"></div>
+        <div class="color-box" id="box4"></div>
+        <div class="color-box" id="box5"></div>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('input[name="colors"]');
+        const boxes = document.querySelectorAll('.color-box');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', () => {
+                updateBoxes();
+            });
+        });
+
+        function updateBoxes() {
+            const selectedColors = Array.from(checkboxes)
+                                        .filter(checkbox => checkbox.checked)
+                                        .map(checkbox => checkbox.value);
+            boxes.forEach((box, index) => {
+                box.style.backgroundColor = selectedColors[index] || '';
+            });
+        }
+    </script>
+</body>
+</html>
