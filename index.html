@@ -3,22 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Color Checkbox Selector</title>
+    <title>TripleS - Bias Color Palette Generator</title>
     <style>
         .color-box-container {
             display: flex;
             margin-top: 10px;
         }
         .color-box {
-            width: 150px;
-            height: 150px;
-            border: 1px solid #000;
+            position: relative;
+            flex: 1;
+            aspect-ratio: 1/1;
+            border: 0.5px solid #0000007a;
             margin-right: 0px;
+        }
+
+        .color-box span {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            font-size: 14px;
+            font-weight: 300;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Add text shadow for better visibility */
+            background-color: rgba(0, 0, 0, 0.3); /* Optional: Add a semi-transparent background for better contrast */
+            padding: 2px 4px;
+            border-radius: 3px;
         }
     </style>
 </head>
 <body>
-    <h2>Select Colors</h2>
+    <h2>TripleS - Bias Color Palette Generator</h2>
     <form id="color-form">
         <input type="checkbox" id="seoyeon" name="colors" value="#1E90FF"> Seoyeon<br>
         <input type="checkbox" id="hyerin" name="colors" value="#736AFF"> Hyerin<br>
@@ -47,11 +61,11 @@
     </form>
 
     <div class="color-box-container">
-        <div class="color-box" id="box1"></div>
-        <div class="color-box" id="box2"></div>
-        <div class="color-box" id="box3"></div>
-        <div class="color-box" id="box4"></div>
-        <div class="color-box" id="box5"></div>
+        <div class="color-box" id="box1"><span></span></div>
+        <div class="color-box" id="box2"><span></span></div>
+        <div class="color-box" id="box3"><span></span></div>
+        <div class="color-box" id="box4"><span></span></div>
+        <div class="color-box" id="box5"><span></span></div>
     </div>
 
     <script>
@@ -70,6 +84,8 @@
                                         .map(checkbox => checkbox.value);
             boxes.forEach((box, index) => {
                 box.style.backgroundColor = selectedColors[index] || '';
+                const textSpan = box.querySelector('span');
+                textSpan.textContent = selectedColors[index] || '';
             });
         }
     </script>
